@@ -1,10 +1,13 @@
 pipeline{
     agent any
      }
-    tools {
-        maven "my_mvn"
-    }
     stages{
+        stage(""){
+            steps{
+                sh 'mvn build'
+            }
+        }
+        
         stage("Build Docker Image"){
             steps{
                 script{

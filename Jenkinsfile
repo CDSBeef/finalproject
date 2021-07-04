@@ -8,7 +8,7 @@ pipeline{
     stages{
         stage("Checkout"){
             steps{
-                git 'https://github.com/CDSBeef/finalproject.git'
+                git credentialsId: 'github_login', url: 'https://github.com/CDSBeef/finalproject.git'
             }
         }
         stage("Build"){

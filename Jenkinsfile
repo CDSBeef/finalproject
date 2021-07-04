@@ -1,10 +1,5 @@
 pipeline{
-    agent {
-        docker {
-          image 'maven:3.8.1-openjdk-8'
-        }
-    }
-    
+    agent any
     stages{
         stage("Checkout"){
             steps{

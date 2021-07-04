@@ -28,7 +28,9 @@ pipeline{
                 sh "mvn package"
             }
         }
-        stage("run"){
+        stage("Deploy"){
+            input 'Is the ready for Production?'
+            milestone(1)
             steps{
                 sh "mvn spring-boot:run"
             }

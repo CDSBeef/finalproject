@@ -27,7 +27,12 @@ pipeline{
             steps{
                 sh "mvn package"
             }
-        }       
+        }
+        stage("run"){
+            steps{
+                sh "java -cp target/CalinDemo.0.0.1-SNAPSHOT.jar CalinDemo.CalinDemoApplication"
+            }
+        }
     }
     post {
         always {

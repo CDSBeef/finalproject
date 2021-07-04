@@ -23,6 +23,11 @@ pipeline{
                 sh "mvn test"
             }
         }
+        stage("pack"){
+            steps{
+                sh "mvn package"
+            }
+        }       
     }
     post {
         always {

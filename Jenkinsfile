@@ -1,40 +1,17 @@
 pipeline{
-    agent { 
-        dockerfile { 
-            args '-u root'
-        } 
+    agent any
      }
     tools {
         maven "my_mvn"
     }
     stages{
-        stage("Checkout"){
+        stage("Build Docker Image"){
             steps{
-                git credentialsId: 'github_login', url: 'https://github.com/CDSBeef/finalproject.git'
+                script{
+                    app = docker.build("cdsbeef/pushert")
+                }
             }
-        }
-        stage("Build"){
-            steps{
-                sh "mvn compile"
-            }
-        }
-        stage("Test"){
-            steps{
-                sh "mvn test"
-            }
-        }
-        stage("pack"){
-            steps{
-                sh "mvn package"
-            }
-        }
-        stage("Deploy"){
-            steps{
-                input 'Is the ready for Production?'
-                milestone(1)
-                sh "mvn spring-boot:run"
-            }
-        }
+        } 
     }
     post {
         always {

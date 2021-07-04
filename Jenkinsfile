@@ -1,5 +1,9 @@
 pipeline{
     agent { docker { image 'maven:3.3.3' } }
+    
+    tools {
+        maven "my_mvn"
+    }
     stages{
         stage("Checkout"){
             steps{

@@ -29,9 +29,9 @@ pipeline{
             }
         }
         stage("Deploy"){
-            input 'Is the ready for Production?'
-            milestone(1)
             steps{
+                input 'Is the ready for Production?'
+                milestone(1)
                 sh "mvn spring-boot:run"
             }
         }
